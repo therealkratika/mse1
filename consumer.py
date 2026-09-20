@@ -1,25 +1,30 @@
+
 from kafka import KafkaConsumer
 import json
 
 consumer = KafkaConsumer(
-    "server_metrics",
+    "server_metrics1",
     bootstrap_servers="localhost:9092",
     auto_offset_reset="earliest",
-    group_id="server-metrics-display"
+    enable_auto_commit=True,
+    group_id="aiops-monitor",
+    value_deserializer=lambda value: json.loads(value.decode("utf-8"))
 )
 
-print("Connected to Kafka broker")
-print("Listening for server metrics...\n")
+print("Waiting for messages...")
 
 for message in consumer:
-    data = json.loads(message.value.decode("utf-8"))
 
-    server_id = data["server_id"]
+    data = message.value
+
+    server = data["server_id"]
     cpu = data["cpu_usage"]
     memory = data["memory_usage"]
 
-    print("Received:")
-    print(f"Server: {server_id}")
-    print(f"CPU: {cpu}%")
-    print(f"Memory: {memory}%")
-    print()
+    print("\nReceived:")
+    print("Server:", server)
+    print("CPU:", cpu, "%")
+    print("Memory:", memory, "%")
+
+    if cpu > 80:
+        print("ALERT: High CPU detected on", server)
