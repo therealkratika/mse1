@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 
-# -----------------------------------------
 # 1. Read the .log file
-# -----------------------------------------
 
 timestamps = []
 cpu = []
@@ -27,10 +25,7 @@ with open("application.log", "r") as file:
         memory.append(memory_value)
         response_time.append(response_value)
 
-
-# -----------------------------------------
 # 2. Basic statistics
-# -----------------------------------------
 
 print("===== BASIC STATISTICS =====")
 

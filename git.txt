@@ -1,3 +1,13 @@
+git status
+git branch
+git switch -c step-1
+git status
+# WRITE/EDIT YOUR STEP 1 CODE
+python step1.py
+git add .
+git commit -m "Complete step 1"
+git push -u origin step-1
+
 if Step 1 FAILS ❌
 git status
 # FIX YOUR STEP 1 CODE
