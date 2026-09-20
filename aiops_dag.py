@@ -1,3 +1,21 @@
+# source ~/airflow-practice/.venv/bin/activate
+
+# airflow version
+
+# airflow dags list
+
+# airflow dags list | grep aiops
+
+# airflow dags unpause aiops_workflow
+
+# airflow standalone
+
+# airflow tasks list aiops_workflow
+
+# airflow dags trigger aiops_workflow
+
+# airflow dags list-runs aiops_workflow
+
 from datetime import datetime
 
 from airflow import DAG
@@ -8,7 +26,7 @@ def collect_metrics():
     cpu = 87
     memory = 65
     response_time = 420
-    
+
     print("===== Collect Metrics =====")
     print("CPU:", cpu)
     print("Memory:", memory)
